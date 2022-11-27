@@ -1,0 +1,356 @@
+<div class="vw-100 vh-100 centrar-xy fondo-centro-fixed position-relative bg-light" id="inicio">
+
+
+    <div class="centrar-xy container h-100 py-4">
+        <div class="container px-0 h-100 rounded position-relative" style="background-color: #dee2e6;">
+            <div class="centrar-xy px-3 montserrat-b h2 text-center py-3">
+                <button class="btn btn-success btn-lg badge-pill px-4 centrar-xy position-relative" onclick="agregar_paciente(this)" style="pointer-events:none;" id="btn_form" disabled="disabled">
+                    <div class="pr-2 mr-1">Formulario para Triaje</div>
+                    <div class="centrar-xy">
+                        <i class="bi bi-person-plus-fill"></i>
+                    </div>
+                </button>
+            </div>
+            
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-person-fill pr-1 text-success"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Nombres:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-nombres');"></i>
+                    </div>
+                    <div class="input-group badge-pill px-0" id="busqueda-nombres-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text border-0 badge-pill pl-3 pr-0 py-1" id="busqueda-nombres-svg">
+                                <i class="bi bi-person-fill p-1" style="font-size: 0.7rem"></i>
+                            </div>
+                        </div>
+                        <input tipo="s" nombre="nombres" type="text" grupo="#busqueda-nombres-group" svg-i="#busqueda-nombres-svg" style="background:#e9ecef; font-size: 0.7rem" class="inputs_busqueda form-control border-0 text-left badge-pill h-auto pr-4 pl-2 shadow-none poppins-m py-0" onfocus="focus_blur_input(this,'success');" onblur="focus_blur_input(this,'success');" oninput="validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-nombres" placeholder="Nombres" autocomplete="off">
+                    </div>
+                    <div class="centrar-xy position-absolute cursor-pointer" style="color: #6c757d; top: 22px; right: 14px; z-index: 9;" onclick="$('#busqueda-nombres').val('');$('#busqueda-nombres').trigger('input');">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-person-fill pr-1 text-warning"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Apellidos:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-apellidos');"></i>
+                    </div>
+                    <div class="input-group badge-pill px-0" id="busqueda-apellidos-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text border-0 badge-pill pl-3 pr-0 py-1" id="busqueda-apellidos-svg">
+                                <i class="bi bi-person-fill p-1" style="font-size: 0.7rem"></i>
+                            </div>
+                        </div>
+                        <input tipo="s" nombre="apellidos" type="text" grupo="#busqueda-apellidos-group" svg-i="#busqueda-apellidos-svg" style="background:#e9ecef; font-size: 0.7rem" class="inputs_busqueda form-control border-0 text-left badge-pill h-auto pr-4 pl-2 shadow-none poppins-m py-0" onfocus="focus_blur_input(this,'success');" onblur="focus_blur_input(this,'success');" oninput="validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-apellidos" placeholder="Apellidos" autocomplete="off">
+                    </div>
+                    <div class="centrar-xy position-absolute cursor-pointer" style="color: #6c757d; top: 22px; right: 14px; z-index: 9;" onclick="$('#busqueda-apellidos').val('');$('#busqueda-apellidos').trigger('input');">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-list-ul pr-1 text-primary"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Servicio de Salud:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-servicio_de_salud');"></i>
+                    </div>
+                    <select nombre="servicio_de_salud" tipo="i" class="inputs_busqueda badge-pill f-size-80 form-control poppins-m" onChange="validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-servicio_de_salud">
+                        <option value="xxx">Servicio de Salud</option>
+                        <option value="1">SIS</option>
+                        <option value="2">EsSalud</option>
+                        <option value="3">Otros</option>
+                    </select>
+                </div>
+                <div class="col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-calendar-date-fill pr-1 text-success"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Fecha de Nacimiento:</span>
+                    </div>
+                    <div class="input-group badge-pill shadow-success-blur px-0" id="busqueda-fecha_nacimiento-group">
+                        <input nombre="fn" step="1" type="date" grupo="#busqueda-fecha_nacimiento-group" svg-i="#busqueda-fecha_nacimiento-svg" style="background:#e9ecef;" class="inputs_busqueda form-control form-control-sm poppins-r border-0 text-left badge-pill h-auto pl-3 shadow-none" onfocus="focus_blur_input(this,'success');" onblur="focus_blur_input(this,'success');" oninput="validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-fecha_nacimiento" placeholder="2022-01-01" autocomplete="off">
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-thermometer-half pr-1 text-danger"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Temperatura:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-temperatura');"></i>
+                    </div>
+                    <div class="input-group badge-pill px-0" id="busqueda-temperatura-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text border-0 badge-pill pl-3 pr-0 py-1" id="busqueda-temperatura-svg">
+                                <i class="bi bi-thermometer-half p-1" style="font-size: 0.7rem"></i>
+                            </div>
+                        </div>
+                        <input tipo="f" nombre="temperatura" type="tel" grupo="#busqueda-temperatura-group" svg-i="#busqueda-temperatura-svg" style="background:#e9ecef; font-size: 0.7rem" class="inputs_busqueda form-control border-0 text-left badge-pill h-auto pl-2 shadow-none poppins-m py-0" onfocus="focus_blur_input(this,'success');" onblur="focus_blur_input(this,'success'); numero_decimal_vacio(this);" oninput="numero_decimal(this); validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-temperatura" placeholder="Temperatura" autocomplete="off">
+                    </div>
+                    <div class="centrar-xy position-absolute cursor-pointer" style="color: #6c757d; top: 22px; right: 14px; z-index: 9;" onclick="$('#busqueda-temperatura').val('');$('#busqueda-temperatura').trigger('input');">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-suit-heart-fill pr-1 text-danger"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Frecuencia Cardiaca:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-frecuencia_cardiaca');"></i>
+                    </div>
+                    <div class="input-group badge-pill px-0" id="busqueda-frecuencia_cardiaca-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text border-0 badge-pill pl-3 pr-0 py-1" id="busqueda-frecuencia_cardiaca-svg">
+                                <i class="bi bi-suit-heart-fill p-1" style="font-size: 0.7rem"></i>
+                            </div>
+                        </div>
+                        <input tipo="f" nombre="frecuencia_cardiaca" type="tel" grupo="#busqueda-frecuencia_cardiaca-group" svg-i="#busqueda-frecuencia_cardiaca-svg" style="background:#e9ecef; font-size: 0.7rem" class="inputs_busqueda form-control border-0 text-left badge-pill h-auto pl-2 shadow-none poppins-m py-0" onfocus="focus_blur_input(this,'success');" onblur="focus_blur_input(this,'success'); numero_decimal_vacio(this);" oninput="numero_decimal(this); validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-frecuencia_cardiaca" placeholder="Frecuencia Cardiaca" autocomplete="off">
+                    </div>
+                    <div class="centrar-xy position-absolute cursor-pointer" style="color: #6c757d; top: 22px; right: 14px; z-index: 9;" onclick="$('#busqueda-frecuencia_cardiaca').val('');$('#busqueda-frecuencia_cardiaca').trigger('input');">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+            </div>
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-speedometer pr-1 text-warning"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Peso:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-peso');"></i>
+                    </div>
+                    <div class="input-group badge-pill px-0" id="busqueda-peso-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text border-0 badge-pill pl-3 pr-0 py-1" id="busqueda-peso-svg">
+                                <i class="bi bi-speedometer p-1" style="font-size: 0.7rem"></i>
+                            </div>
+                        </div>
+                        <input tipo="f" nombre="peso" type="tel" grupo="#busqueda-peso-group" svg-i="#busqueda-peso-svg" style="background:#e9ecef; font-size: 0.7rem" class="inputs_busqueda form-control border-0 text-left badge-pill h-auto pl-2 shadow-none poppins-m py-0" onfocus="focus_blur_input(this,'success');" onblur="focus_blur_input(this,'success'); numero_decimal_vacio(this);" oninput="numero_decimal(this); validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-peso" placeholder="Peso" autocomplete="off">
+                    </div>
+                    <div class="centrar-xy position-absolute cursor-pointer" style="color: #6c757d; top: 22px; right: 14px; z-index: 9;" onclick="$('#busqueda-peso').val('');$('#busqueda-peso').trigger('input');">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-person-lines-fill pr-1 text-warning"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Talla:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-talla');"></i>
+                    </div>
+                    <div class="input-group badge-pill px-0" id="busqueda-talla-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text border-0 badge-pill pl-3 pr-0 py-1" id="busqueda-talla-svg">
+                                <i class="bi bi-person-lines-fill p-1" style="font-size: 0.7rem"></i>
+                            </div>
+                        </div>
+                        <input tipo="f" nombre="talla" type="tel" grupo="#busqueda-talla-group" svg-i="#busqueda-talla-svg" style="background:#e9ecef; font-size: 0.7rem" class="inputs_busqueda form-control border-0 text-left badge-pill h-auto pl-2 shadow-none poppins-m py-0" onfocus="focus_blur_input(this,'success');" onblur="focus_blur_input(this,'success'); numero_decimal_vacio(this);" oninput="numero_decimal(this); validar_Form_class('.inputs_busqueda','#btn_form','val');" id="busqueda-talla" placeholder="Talla" autocomplete="off">
+                    </div>
+                    <div class="centrar-xy position-absolute cursor-pointer" style="color: #6c757d; top: 22px; right: 14px; z-index: 9;" onclick="$('#busqueda-talla').val('');$('#busqueda-talla').trigger('input');">
+                        <i class="bi bi-x-circle-fill"></i>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="justify-content-center align-items-center px-3 rounded scroll-cell shadow h-100 w-100 op-9 py-3 d-flex" style="overflow-y:overlay;">
+                <div class="h-100 w-100 position-relative">
+                    <table class="table m-0 table-light bg-light table-sm table-hover table-striped table-responsive h-100 rounded scroll-cell" id="table-resultados_pacientes">
+                        <thead class="thead-dark thead-fixed montserrat-r"> 
+                            <tr> 
+                                <th class="w-50 align-middle">
+                                    <div class="centrar-xy text-center">Nombres</div>
+                                </th>
+                                <th class="w-50 align-middle">
+                                    <div class="centrar-xy text-center">Apellidos</div>
+                                </th>
+                                <th class="align-middle">
+                                    <div class="centrar-xy px-1 text-success">
+                                        <i class="bi bi-info-circle-fill"></i>
+                                    </div>
+                                </th>
+                            </tr> 
+                        </thead>
+                        <tbody class="position-relative" id="tb-resultados_pacientes">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(async function() {
+        var parametros = {tipo: 'Buscar Pacientes'};
+        post_generico({url: url_g, parametros, callback:(res,obj_cb)=>{
+            $.each(res.obj, function (i, val) {
+                add_tr({tb: 'resultados_pacientes', class_tr: 'montserrat-m small', id_tr: 'tr-'+val.cod, parametros:[
+                    {tipo:"scroll", scroll_class_td: 'px-0 scroll-cell', descripcion: val.nombres},
+                    {tipo:"scroll", scroll_class_td: 'px-0 scroll-cell', descripcion: val.apellidos},
+                    {descripcion: "<div class='centrar-xy px-1 text-success cursor-pointer' onClick='mostrar_datos("+val.cod+")'><i class='bi bi-info-circle-fill'></i></div>"}
+                ]});
+            });
+        }})
+    });
+
+    function escuchar(id){
+        var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+        var recognition = new SpeechRecognition();
+        var aux_propiedad = 'notif_escuchar';
+
+        recognition.onstart = function() {
+            notif_fire[aux_propiedad] = notif_sm.fire({
+                icon: 'success',
+                title: 'Escuchando'+notif_close(aux_propiedad),
+                didDestroy: ()=>{
+                    delete notif_fire[aux_propiedad];
+                }
+            });
+        };
+        
+        recognition.onspeechend = function() {
+            notif_fire[aux_propiedad] = notif_sm.fire({
+                icon: 'warning',
+                title: 'Creo que terminaste de hablar'+notif_close(aux_propiedad),
+                didDestroy: ()=>{
+                    delete notif_fire[aux_propiedad];
+                }
+            });
+            recognition.stop();
+        }
+        
+        recognition.onresult = function(event) {
+            var transcript = event.results[0][0].transcript;
+            var confidence = event.results[0][0].confidence;
+            if((confidence*100) >= 50){
+                var exist = true;
+                $(id).children('option').each(function(i) {
+                    console.log($(this).text().toLowerCase());
+                    console.log(transcript);
+                    if($(this).text().toLowerCase() == transcript){
+                        $(this).attr("selected", true);
+                        exist = false;
+                        return
+                    }
+                });
+                if(exist){$(id).val(transcript);}
+                if($(id).attr('oninput')){
+                    $(id).trigger('input');
+                }else if($(id).attr('onchange')){
+                    $(id).trigger('change');
+                }
+            }else{
+                notif_fire[aux_propiedad] = notif_sm.fire({
+                    icon: 'error',
+                    title: 'Disculpa, no entendí lo que dijiste'+notif_close(aux_propiedad),
+                    didDestroy: ()=>{
+                        delete notif_fire[aux_propiedad];
+                    }
+                });
+            }
+        };
+
+        recognition.start();
+    }
+
+    function agregar_paciente(elem){
+        var parametros = get_inputs_class('.inputs_busqueda');
+        parametros = remove_inputs_vacios_obj(parametros);
+        if(Object.keys(parametros).length == 8){
+            parametros['tipo'] = 'Nuevo Paciente';
+            post_generico({url: url_g, parametros, callback:(res,obj_cb)=>{
+                Swal.fire('Paciente registrado con Éxito', '', 'success');
+                add_tr({tb: 'resultados_pacientes', class_tr: 'montserrat-m small', parametros:[
+                    {tipo:"scroll", scroll_class_td: 'px-0 scroll-cell', descripcion: parametros.nombres},
+                    {tipo:"scroll", scroll_class_td: 'px-0 scroll-cell', descripcion: parametros.apellidos},
+                    {descripcion: "<div class='centrar-xy px-1 text-success'><i class='bi bi-info-circle-fill'></i></div>"}
+                ]});
+            }})
+        }
+    }
+
+    function mostrar_datos(cod){
+        var servicios = ["","SIS","EsSalud","Otros"];
+        var parametros = {tipo: 'Buscar Paciente', cod};
+        carga_global('on');
+        post_generico({url: url_g, parametros, callback:(res,obj_cb)=>{
+            var val = res.obj;
+            Swal.fire({
+                title: '<i class="bi bi-pencil-square text-success"></i> Datos del Paciente',
+                html: `
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-person-fill pr-1 text-success"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Nombres:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-nombres');"></i>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+val.nombres+`</div>
+                </div>
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-person-fill pr-1 text-warning"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Apellidos:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-apellidos');"></i>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+val.apellidos+`</div>
+                </div>
+            </div>
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-list-ul pr-1 text-primary"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Servicio de Salud:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-servicio_de_salud');"></i>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+servicios[val.servicio_de_salud]+`</div>
+                </div>
+                <div class="col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-calendar-date-fill pr-1 text-success"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Fecha de Nacimiento:</span>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+val.fecha_nacimiento.slice(0, 10)+`</div>
+                </div>
+            </div>
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-thermometer-half pr-1 text-danger"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Temperatura:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-temperatura');"></i>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+val.temperatura+` C°</div>
+                </div>
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-suit-heart-fill pr-1 text-danger"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Frecuencia Cardiaca:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-frecuencia_cardiaca');"></i>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+val.frecuencia_cardiaca+`</div>
+                </div>
+            </div>
+            <div class="row m-0 px-3">
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-speedometer pr-1 text-warning"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Peso:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-peso');"></i>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+val.peso+` Kg.</div>
+                </div>
+                <div class="position-relative col-6 my-1 px-1">
+                    <div class="d-flex f-size-60 pb-1 pl-1">
+                        <i class="bi bi-person-lines-fill pr-1 text-warning"></i>
+                        <span class="pl-1 font-weight-bold text-nowrap">Talla:</span>
+                        <i class="bi bi-mic-fill centrar-xy cursor-pointer ml-2 text-success" onClick="escuchar('#busqueda-talla');"></i>
+                    </div>
+                    <div class="poppins-m small text-left pl-1">`+val.talla+` Mt.</div>
+                </div>
+            </div>`
+            });
+            carga_global('off');
+        }})
+    }
+</script>

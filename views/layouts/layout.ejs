@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title><%- title %></title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta name="description" content="<%- description %>"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+        <!-- <meta name="google-site-verification" content="MIuItj5VWgkVwyqJ_OrvxZd6tnA9nmpjv_wFJomcE9o" />
+        <meta name="msvalidate.01" content="664224CE015967AD1C06C1435B2B12C5" /> -->
+        
+        <!-- <meta property="og:title" content="RayApp" />
+        <meta property="og:description" content="<%- description %>" />
+        <meta property="og:type" content="product" />
+        <meta property="og:url" content="https://www.rayapp.us" />
+        <meta property="og:image" content="https://www.rayapp.us/img/ogfb.jpg" />
+        <meta property="og:site_name" content="RayApp" />
+        
+        <meta name="twitter:card" content="photo" />
+        <meta name="twitter:site" content="@RayApp" />
+        <meta name="twitter:title" content="RayApp" />
+        <meta name="twitter:description" content="<%- description %>" />
+        <meta name="twitter:image" content="https://www.rayapp.us/img/ogfb.jpg" />
+        <meta name="twitter:url" content="https://www.rayapp.us" />
+
+        <link rel="manifest" href="/manifest.json" /> -->
+        
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-57x57.png" sizes="57x57" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-60x60.png" sizes="60x60" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-72x72.png" sizes="72x72" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-76x76.png" sizes="76x76" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-114x114.png" sizes="114x114" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-120x120.png" sizes="120x120" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-144x144.png" sizes="144x144" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-152x152.png" sizes="152x152" />
+        <link rel="apple-touch-icon" type="image/x-icon" href="/img/favicons/icon-180x180.png" sizes="180x180" />
+        
+        <link rel="icon" type="image/png" href="/img/favicons/icon-128x128.png" sizes="128x128" />
+        <link rel="icon" type="image/png" href="/img/favicons/icon-192x192.png" sizes="192x192" />
+        
+        <meta name="msapplication-TileImage" content="img/favicons/icon-192x192.png" />
+
+        <meta name="msapplication-TileColor" content="#000" />
+        <meta name="apple-mobile-web-app-status-bar" content="#000" />
+        <meta name="theme-color" content="#000">
+        
+        <link rel="shortcut icon" href="/img/favicons/icon-57x57.png">
+        
+        <%- include('../partes/styles.ejs') %>
+    </head>
+    <body>
+        <%- include('../partes/scripts.ejs') %>
+        <script>
+            var searchTimer;
+            var url_g = '/post_generico';
+            Offline.options = {
+                checkOnLoad: false,
+                interceptRequests: true,
+                reconnect: {
+                    initialDelay: 5,
+                    delay: 8
+                },
+                requests: false,
+                game: false
+            }
+
+            const notif_sm = Swal.mixin({
+                toast: true,
+                position: 'top-end',
+                showConfirmButton: false,
+                timer: 2000,
+                timerProgressBar: true,
+                didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                }
+            });
+            var notif_fire = {};
+            function notif_close(propiedad){
+                let close = `<i class="bi bi-x-circle-fill cursor-pointer position-absolute text-danger" onClick="notif_fire['`+propiedad+`'].close();" style="top: -15px; opacity: 0.7; right: -25px;"></i>`;
+                return close;
+            }
+            function new_notif(propiedad,icon,titulo){
+                notif_fire[propiedad] = notif_sm.fire({
+                    icon,
+                    title: titulo+notif_close(propiedad),
+                    didDestroy: ()=>{
+                        delete notif_fire[propiedad];
+                    }
+                });
+            }
+
+            anchos_pantalla = {sm: 576, md: 768, lg: 992, xl: 1200};
+            var tippys_guardar = {};
+        </script>
+        <style>
+            .offline-ui{
+                opacity: 0.9
+            }
+            .tippy-box[data-theme~='light-border'] {
+                box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+            }
+        </style>
+        <div id="carga" class="loader">
+            <!-- <div class="centrar-xy w-100 h-100">
+                <video autoplay loop muted style="max-width: 250px;">
+                    <source src="/img/rayapp_load.mp4" type="video/mp4">
+                </video>
+            </div> -->
+        </div>
+        <div color="<%- color %>" class="vw-100 vh-100 position-relative overflow-hidden text-dark bg-white" onclick="burbujita(event,this)" id="pantalla">
+
+            <%-body%>
+
+        </div>
+
+        <script>
+            $(window).on('load', function() {
+                $("#carga").animate({"opacity": 0}, 400, function() {
+                    $("#carga").css( "display","none" );
+                });
+            });
+        </script>
+        
+    </body>
+</html>

@@ -1,0 +1,28 @@
+{
+    "name": "prueba_datakraft",
+    "version": "1.0.0",
+    "description": "Formulario de Triaje",
+    "main": "app.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [],
+    "author": "Dave Freelancer",
+    "license": "ISC",
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/DaveARG/Prueba-Data-Kraft.git"
+    },
+    "dependencies": {
+        "compression": "^1.7.4",
+        "cookie-parser": "^1.4.6",
+        "decimal.js": "^10.4.1",
+        "dotenv": "^8.2.0",
+        "ejs": "^3.1.6",
+        "express": "^4.17.1",
+        "express-ejs-layouts": "^2.5.1",
+        "mysql": "^2.18.1",
+        "nodemon": "^2.0.18",
+        "uuid": "^8.3.2"
+    }
+}

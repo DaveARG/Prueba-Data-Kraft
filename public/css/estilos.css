@@ -1,0 +1,289 @@
+body{background-color: #000;}
+
+html {
+    font-size: 1rem;
+}
+.no-scroll::-webkit-scrollbar {
+    display: none;
+}
+.no-scroll{
+    scrollbar-width: none;
+}
+
+.scroll-cell::-webkit-scrollbar-track{
+	-webkit-box-shadow: none;
+	background-color: #0000;
+}
+.scroll-cell::-webkit-scrollbar{
+	width: 4px;
+    height: 4px;
+	background-color: #0000;
+}
+.scroll-cell::-webkit-scrollbar-thumb{
+	background-color: #00000020;
+	border-radius: 10px;
+}
+
+@font-face {
+    font-family: "Lalezar-Regular";
+    src: url("fuentes/Lalezar-Regular.ttf") format("truetype")
+}
+.lalezar-r{
+    font-family: Lalezar-Regular!important;
+}
+@font-face {
+    font-family: "Poppins-Regular";
+    src: url("fuentes/Poppins-Regular.ttf") format("truetype")
+}
+.poppins-r{
+    font-family: Poppins-Regular!important;
+}
+@font-face {
+    font-family: "Poppins-Medium";
+    src: url("fuentes/Poppins-Medium.ttf") format("truetype")
+}
+.poppins-m{
+    font-family: Poppins-Medium!important;
+}
+@font-face {
+    font-family: "Poppins-Bold";
+    src: url("fuentes/Poppins-Bold.ttf") format("truetype")
+}
+.poppins-b{
+    font-family: Poppins-Bold!important;
+}
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url("fuentes/Montserrat-Regular.ttf") format("truetype")
+}
+.montserrat-r{
+    font-family: Montserrat-Regular!important;
+}
+@font-face {
+    font-family: "Montserrat-Medium";
+    src: url("fuentes/Montserrat-Medium.ttf") format("truetype")
+}
+.montserrat-m{
+    font-family: Montserrat-Medium!important;
+}
+@font-face {
+    font-family: "Montserrat-Bold";
+    src: url("fuentes/Montserrat-Bold.ttf") format("truetype")
+}
+.montserrat-b{
+    font-family: Montserrat-Bold!important;
+}
+
+.op-1{ opacity: 0.1; }
+.op-2{ opacity: 0.2; }
+.op-3{ opacity: 0.3; }
+.op-4{ opacity: 0.4; }
+.op-5{ opacity: 0.5; }
+.op-6{ opacity: 0.6; }
+.op-7{ opacity: 0.7; }
+.op-8{ opacity: 0.8; }
+.op-9{ opacity: 0.9; }
+.op-10{ opacity: 1; }
+
+.f-size-100{ font-size: 100%; }
+.f-size-90{ font-size: 90%; }
+.f-size-80{ font-size: 80%; }
+.f-size-70{ font-size: 70%; }
+.f-size-60{ font-size: 60%; }
+.f-size-50{ font-size: 50%; }
+.f-size-40{ font-size: 40%; }
+.f-size-30{ font-size: 30%; }
+.f-size-20{ font-size: 20%; }
+.f-size-10{ font-size: 10%; }
+.centrar-xy{
+    display: flex!important;
+    justify-content: center!important;
+    align-items: center!important;
+}
+.w-fit{
+    width: fit-content!important;
+}
+.cursor-pointer{
+    cursor:pointer!important;
+}
+.loader{
+    position:fixed;
+    left:0px;
+    top:0px;
+    width:100vw;
+    height:100vh;
+    z-index:9999;
+    background-color:#000;
+    display:flex;
+}
+.preloader{
+    width: 1em;
+    height: 1em;
+    border: 0.2em solid #e9ecef;
+    border-top: 0.2em solid #000;
+    border-radius: 50%;
+    animation-name: girar;
+    animation-duration: 0.8s;
+    animation-iteration-count: infinite;
+}
+.badge-pill-i{
+    border-radius: 10rem!important
+}
+
+.fondo-centro{
+    background: no-repeat center center;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+.fondo-centro-fixed{
+    background: no-repeat center center fixed;
+    background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+@keyframes girar{
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+.border-top-success{
+    border-top: 0.2em solid #28a745;
+}
+.border-top-warning{
+    border-top: 0.2em solid #d39e00;
+}
+.border-top-danger{
+    border-top: 0.2em solid #dc3545;
+}
+.intercalado-success div:nth-child(even){background:#28a74520;}
+.intercalado-warning div:nth-child(even){background:#d39e0020;}
+.intercalado-danger div:nth-child(even){background:#dc354520;}
+
+/* Sombras */
+@keyframes shadowPulse-success {
+    0% {
+        box-shadow:0 0 0px 0.00rem #28a745;
+    }
+    100% {
+        box-shadow:0 0 15px 0.05rem #28a745;
+    }
+}
+@keyframes shadowBlur-success {
+    0% {
+        box-shadow:0 0 15px 0.05rem #28a745;
+    }
+    100% {
+        box-shadow:0 0 0px 0.00rem #28a745;
+    }
+}
+@keyframes shadowPulse-warning {
+    0% {
+        box-shadow:0 0 0px 0.00rem #d39e00;
+    }
+    100% {
+        box-shadow:0 0 15px 0.05rem #d39e00;
+    }
+}
+@keyframes shadowBlur-warning {
+    0% {
+        box-shadow:0 0 15px 0.05rem #d39e00;
+    }
+    100% {
+        box-shadow:0 0 0px 0.00rem #d39e00;
+    }
+}
+@keyframes shadowPulse-danger {
+    0% {
+        box-shadow:0 0 0px 0.00rem #dc3545;
+    }
+    100% {
+        box-shadow:0 0 15px 0.05rem #dc3545;
+    }
+}
+@keyframes shadowBlur-danger {
+    0% {
+        box-shadow:0 0 15px 0.05rem #dc3545;
+    }
+    100% {
+        box-shadow:0 0 0px 0.00rem #dc3545;
+    }
+}
+.shadow-success{
+    box-shadow:0 0 15px 0.05rem #28a745;
+    animation-name: shadowPulse-success;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-success-blur{
+    box-shadow:none;
+    animation-name: shadowBlur-success;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-success-focus:focus{
+    box-shadow:0 0 15px 0.05rem #28a745;
+    animation-name: shadowPulse-success;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-warning{
+    box-shadow:0 0 15px 0.05rem #d39e00;
+    animation-name: shadowPulse-warning;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-warning-blur{
+    box-shadow:none;
+    animation-name: shadowBlur-warning;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-warning-focus:focus{
+    box-shadow:0 0 15px 0.05rem #d39e00;
+    animation-name: shadowPulse-warning;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-danger{
+    box-shadow:0 0 15px 0.05rem #dc3545;
+    animation-name: shadowPulse-danger;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-danger-blur{
+    box-shadow:none;
+    animation-name: shadowBlur-danger;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+.shadow-danger-focus:focus{
+    box-shadow:0 0 15px 0.05rem #dc3545;
+    animation-name: shadowPulse-danger;
+    animation-duration: 0.25s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear;
+}
+
+.thead-fixed th{
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    border-top: 1px;
+}
